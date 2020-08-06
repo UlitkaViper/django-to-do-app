@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
+    <style>
+        .textfield {
+            border: 1px solid black;
+            border-radius: 7px;
+            width: 100%;
+        }
+
+        .textfield:focus {
+            outline: none !important;
+            border-radius: 7px;
+            width: 100%;
+        }
+    </style>
+    <title> {% block title %} {% endblock title %} </title>
+</head>
+
+<body>
+
+    <body>
+        <div
+            class="d-flex flex-column flex-md-row justify-content-center p-3 px-md-4 mb-3 bg-white border-bottom shadow-sm">
+            <a href="/" class="text-decoration-none my-0 mr-md-2 font-italic font-weight-bold h3 text-dark">UlVi</a>
+            <nav class="my-0 pt-1 my-md-0 mr-md-3">
+                <a class="p-2 text-dark" href="/">Tasks</a>
+                <a class="p-2 text-dark" href="/create">Create Task</a>
+
+            </nav>
+        </div>
+        {% block content %}
+
+        {% endblock content %}
+    </body>
+
+</html>
