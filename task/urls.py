@@ -17,8 +17,7 @@ from django.urls import path
 from .views import *
 
 urlpatterns = [
-    path('', TaskList.as_view(), name='task-list'),
-    path('create/', CreateTask.as_view(), name='task-create'),
+    path('', CreateTask.as_view(), name='task-list'),
     path('delete/<int:id>', delete_task, name='delete-task'),
 
 ]

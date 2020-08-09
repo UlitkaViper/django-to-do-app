@@ -4,38 +4,46 @@ Tasks List
 {% endblock title %}
 
 {% block content %}
-<div style="margin-top:20px"></div>
-{% for task in object_list %}
-<form action="{% url 'delete-task' task.id %}" method="POST">
-    {% csrf_token %}
-    <div class="mx-auto"
-        style="max-width: 50rem; overflow-wrap: break-word; border: 1px solid black; border-radius: 7px; padding:20px; margin-top:20px">
-        {% if task.completed %}
-        <strike>
-            <h2 class="text-dark">{{ task.title }}</h2>
-        </strike>
-        <div style="display: flex; justify-content: flex-end;">
-            <button type="submit" class="btn btn-outline-dark" name="Return" style="width: 6rem;">Return</button>
-            <button type="submit" class="btn btn-outline-dark ml-3 " name="Delete" style="width: 6rem;">Delete</button>
-        </div>
+{% csrf_token %}
+<div class="mx-auto create_task_div" style="max-width: 50rem; overflow-wrap: break-word; border-radius: 7px;
+margin-top:20px; margin-bottom:70px">
+    <p>Create Task</p>
+    <div style="display:flex;">
 
-
-
-
-        {% else %}
-
-        <h2 class="text-decoration-none text-dark">{{ task.title }}</h2>
-        <div style="display: flex; justify-content: flex-end;">
-            <button type="submit" class="btn btn-outline-dark" name="Done" style="width: 6rem;">Done</button>
-
-            <button type="submit" class="btn btn-outline-dark ml-3 " name="Delete" style="width: 6rem;">Delete</button>
-        </div>
-
-
-
-        {% endif %}
-
+        <textarea id="textarea" class="title"></textarea>
+        <button type="submit" class="btn btn-outline-dark my_button create_task" style="">Create</button>
     </div>
-</form>
+</div>
+
+{% for task in object_list %}
+<div class="mx-auto" style=" max-width: 50rem; overflow-wrap: break-word; border: 1px solid black; border-radius: 7px; padding:20px;
+    margin-top:20px">
+
+
+    {% if task.completed %}
+
+    <h2 class="text-dark stroked_h">{{ task.title }}</h2>
+
+    <div style="display: flex; justify-content: flex-end;" id="{{ task.id }}">
+        <button type="submit" class="btn btn-outline-dark my_button Done" name="Return">Return</button>
+        <button type="submit" class="btn btn-outline-dark ml-3 my_button Delete" name="Delete">Delete</button>
+    </div>
+
+    {% else %}
+
+    <h2 class="text-dark">{{ task.title }}</h2>
+    <div style="display: flex; justify-content: flex-end;" id="{{ task.id }}">
+        <button type="submit" class="btn btn-outline-dark my_button Done" name="Done">Done</button>
+
+        <button type="submit" class="btn btn-outline-dark my_button ml-3 Delete" name="Delete">Delete</button>
+    </div>
+
+
+
+    {% endif %}
+
+
+</div>
 {% endfor %}
+
 {% endblock content %}
